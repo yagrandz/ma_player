@@ -28,7 +28,7 @@ class PlayerStat {
 			columns: battleTableHeader,
 			order: [[ battleTableHeader.length-1, "desc" ]],
 			pageLength: 10,
-			dom:'ft',
+			dom:'ftp',
 		} );
 	}
 	
