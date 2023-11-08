@@ -22,6 +22,14 @@ class PlayerStat {
 	}
 	
 	createTable(){
+	    $('#deck_table').DataTable( {
+			responsive: true,
+			data: deckStatsData,
+			columns: deckStatsHeader,
+			order: [[ deckStatsHeader.length-1, "desc" ]],
+			pageLength: 10,
+			dom:'ftp',
+		} );
 		$('#battle_table').DataTable( {
 			responsive: true,
 			data: battleTableData,
