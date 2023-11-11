@@ -50,16 +50,20 @@ table .ma-card {
     margin: 1px;
 }
 
-.col-sm.card-summons-count span {
+.card-summons-count span {
     text-align: right;
     position: absolute;
-    left: 22px;
+    left: 6px;
     top: 20px;
     font-size: 10px;
     color: white;
     text-shadow: 1px 1px 2px black;
 }
 
-.col-sm.card-summons-count {
+.card-summons-count {
     position: relative;
+}
+
+.ma-deck {
+    width: 140px;
 }
