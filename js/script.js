@@ -28,7 +28,7 @@ class PlayerStat {
 			columns: deckStatsHeader,
 			order: [[ deckStatsHeader.length-1, "desc" ]],
 			pageLength: 10,
-			dom:'ftp',
+			dom:'tp',
 		} );
 		$('#battle_table').DataTable( {
 			responsive: true,
