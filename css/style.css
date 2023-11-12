@@ -67,3 +67,7 @@ table .ma-card {
 .ma-deck {
     width: 140px;
 }
+
+.ma-battle-summory .ma-icon {
+    width: 24px;
+}
