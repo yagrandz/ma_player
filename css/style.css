@@ -71,3 +71,11 @@ table .ma-card {
 .ma-battle-summory .ma-icon {
     width: 24px;
 }
+
+table.dataTable>tbody>tr.child ul.dtr-details {
+    display: block;
+}
+
+.ma-battle-summory {
+    width: 100%;
+}
