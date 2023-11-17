@@ -34,7 +34,7 @@ class PlayerStat {
 			responsive: true,
 			data: battleTableData,
 			columns: battleTableHeader,
-			order: [[ battleTableHeader.length-1, "desc" ]],
+			order: [[ battleTableHeader.length-1, "asc" ]],
 			pageLength: 10,
 			dom:'ftp',
 		} );
