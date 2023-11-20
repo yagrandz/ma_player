@@ -99,6 +99,7 @@ table .ma-card {
 
 .ma-deck {
 	width: max-content;
+	margin: 0 auto;
 }
 
 .ma-battle-summory .ma-icon {
