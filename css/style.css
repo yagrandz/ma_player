@@ -118,3 +118,8 @@ table.dataTable>tbody>tr.child ul.dtr-details {
 	margin-right: 0;
 	margin-left: auto;
 }
+
+.text-start .ma-deck {
+    margin-right: auto;
+    margin-left: 0;
+}
