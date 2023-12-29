@@ -38,6 +38,14 @@ class PlayerStat {
 			pageLength: 10,
 			dom:'ftp',
 		} );
+		$('#tournament_table').DataTable( {
+			responsive: true,
+			data: tournamentsData,
+			columns: tournamentsHeaders,
+			order: [[ tournamentsHeaders.length-1, "asc" ]],
+			pageLength: 10,
+			dom:'ftp',
+		} );
 	}
 	
 	createCharts(){
