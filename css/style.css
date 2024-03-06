@@ -102,6 +102,10 @@ table .ma-card {
 	margin: 0 auto;
 }
 
+.ma-icon {
+	width: 24px;
+}
+
 .ma-battle-summory .ma-icon {
 	width: 24px;
 }

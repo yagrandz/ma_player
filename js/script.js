@@ -1,12 +1,17 @@
 class PlayerStat {
 	constructor(){
-		this.id = location.hash.substr(1);
+		this.id = this.getParam('id')?this.getParam('id'):location.hash.substr(1);
 		$.getScript( 'https://mybulletecho.ru/ma/stats/player/?id='+this.id )
 		  .done(this.onDataLoad.bind(this))
 		  .fail(function( jqxhr, settings, exception ) {
 			alert('Data load Error');
 		});
 		$('.chart_init_btn').click(this.onChatInitBtnClick.bind(this));
+	}
+
+	getParam(name){
+		if(name=(new RegExp('[?&]'+encodeURIComponent(name)+'=([^&]*)')).exec(location.search))
+		   return decodeURIComponent(name[1]);
 	}
 	
 	onDataLoad(){
