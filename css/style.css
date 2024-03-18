@@ -127,3 +127,23 @@ table.dataTable>tbody>tr.child ul.dtr-details {
     margin-right: auto;
     margin-left: 0;
 }
+
+.ma-clan-icon {
+    position: relative;
+    min-width: 25px;
+    min-height: 25px;
+    width: auto;
+    display: inline-block;
+}
+
+.ma-clan-icon img {
+    position: absolute;
+    width: 100%;
+}
+
+img.ma-clan-icon-icon {
+    z-index: 1;
+    width: 60%;
+    top: 30%;
+    left: 20%;
+}
