@@ -17,6 +17,7 @@ class PlayerStat {
 	onDataLoad(){
 		this.setData();
 		this.createTable();
+		$('body').append(bodyEndHtml);
 	}	
 
 	setData(){
