@@ -18,6 +18,10 @@ class PlayerStat {
 		this.setData();
 		this.createTable();
 		$('body').append(bodyEndHtml);
+		var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+		popoverTriggerList.map(function (popoverTriggerEl) {
+		return new bootstrap.Popover(popoverTriggerEl)
+		})
 	}	
 
 	setData(){
