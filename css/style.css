@@ -147,3 +147,27 @@ img.ma-clan-icon-icon {
     top: 30%;
     left: 20%;
 }
+
+
+.ma-arena-gladiator{
+	background-image: url('https://mybulletecho.ru/ma/img/battlefield/GladiatorsArenacr.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.ma-battlefield{
+	display: block;
+	position: relative;
+}
+
+.ma-unit{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	margin-left: -25px;
+	margin-top: -25px;
+	background-color: white;
+	border-radius: 6px;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
