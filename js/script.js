@@ -29,17 +29,17 @@ class PlayerStat {
 
 	openBattleModal(battleId, roundId) {
 		var modalId = 'modal_battle_' + battleId + '_r_' + roundId;
-		if ($('#' + modalId).length>0){
+		if ($('#' + modalId).length > 0) {
 			$('#' + modalId).modal('show');
-		}else{
+		} else {
 			$.getScript('https://mybulletecho.ru/ma/stats/player/battle_modal/?battleId=' + battleId + '&roundId=' + roundId)
-			.done(()=>{
-				$('body').append(window[modalId]);
-				$('#' + modalId).modal('show');
-			})
-			.fail(function (jqxhr, settings, exception) {
-				alert('Data load Error');
-			});
+				.done(() => {
+					$('body').append(window[modalId]);
+					$('#' + modalId).modal('show');
+				})
+				.fail(function (jqxhr, settings, exception) {
+					alert('Data load Error');
+				});
 		}
 
 	}
@@ -60,11 +60,35 @@ class PlayerStat {
 			pageLength: 10,
 			dom: 'tp',
 		});
+		let updateColumnIndex = 0;
+		battleTableHeader.forEach((column, index) => column.data=='UPDATED'&&(updateColumnIndex = index));
 		$('#battle_table').DataTable({
 			responsive: true,
-			data: battleTableData,
+			//data: battleTableData,
+			"ajax": function (data, callback, settings) {
+				var params = [];
+				settings.aaSorting.forEach(sort => params.push('sort['+settings.aoColumns[sort[0]].data+']='+sort[1]));
+				settings.aoColumns.forEach(column => params.push('fields[]='+column.data));
+				params.push('search='+data.search.value);
+				params.push('limit='+data.length);
+				params.push('draw='+data.draw);
+				params.push('offset='+data.start);
+				params.push('playerId='+this.id);
+				$.getScript('https://mybulletecho.ru/ma/stats/player/battle_table/?' + params.join('&'))
+				.done(() => {
+					callback(
+						battle_table_data
+					);
+				})
+				.fail(function (jqxhr, settings, exception) {
+					alert('Data load Error');
+				});
+			}.bind(this),
+			processing: true,
+			serverSide: true,
+			searching: false,
 			columns: battleTableHeader,
-			order: [[battleTableHeader.length - 1, "asc"]],
+			order: [[updateColumnIndex, "desc"]],
 			pageLength: 10,
 			dom: 'ftp',
 		});
