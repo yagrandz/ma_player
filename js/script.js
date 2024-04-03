@@ -33,13 +33,14 @@ class PlayerStat {
 			$('#' + modalId).modal('show');
 		} else {
 			$.getScript('https://mybulletecho.ru/ma/stats/player/battle_modal/?battleId=' + battleId + '&roundId=' + roundId)
-				.done(() => {
-					$('body').append(window[modalId]);
-					$('#' + modalId).modal('show');
-				})
-				.fail(function (jqxhr, settings, exception) {
-					alert('Data load Error');
-				});
+			.done(()=>{
+				$('body').append(window[modalId]);
+				$('[data-bs-toggle="popover"]', $('#' + modalId)).each((i,e)=>new bootstrap.Popover(e));
+				$('#' + modalId).modal('show');
+			})
+			.fail(function (jqxhr, settings, exception) {
+				alert('Data load Error');
+			});
 		}
 
 	}
