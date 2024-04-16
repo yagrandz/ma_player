@@ -93,6 +93,38 @@ class PlayerStat {
 			pageLength: 10,
 			dom: 'ftp',
 		});
+		let dateColumnIndex = 0;
+		clanLogTableHeader.forEach((column, index) => column.data=='DATE'&&(dateColumnIndex = index));
+		$('#clan_log_table').DataTable({
+			responsive: true,
+			//data: battleTableData,
+			"ajax": function (data, callback, settings) {
+				var params = [];
+				settings.aaSorting.forEach(sort => params.push('sort['+settings.aoColumns[sort[0]].data+']='+sort[1]));
+				settings.aoColumns.forEach(column => params.push('fields[]='+column.data));
+				params.push('search='+data.search.value);
+				params.push('limit='+data.length);
+				params.push('draw='+data.draw);
+				params.push('offset='+data.start);
+				params.push('playerId='+this.id);
+				$.getScript('https://mybulletecho.ru/ma/stats/player/clan_log/?' + params.join('&'))
+				.done(() => {
+					callback(
+						battle_table_data
+					);
+				})
+				.fail(function (jqxhr, settings, exception) {
+					alert('Data load Error');
+				});
+			}.bind(this),
+			processing: true,
+			serverSide: true,
+			searching: false,
+			columns: clanLogTableHeader,
+			order: [[dateColumnIndex, "desc"]],
+			pageLength: 10,
+			dom: 'ftp',
+		});
 		$('#tournament_table').DataTable({
 			responsive: true,
 			data: tournamentsData,
